@@ -42,9 +42,9 @@ public class Robot {
 		}
 	}
 	
-	public boolean seDeplacer( int distance)
+	public boolean seDeplacer()
 	{
-		distance = calculerDistance();
+		int distance = calculerDistance();
 		if(this.estAllumer)
 		{
 			if( distance < 10 )
@@ -102,7 +102,7 @@ public class Robot {
 		return str;	
 	}
 	
-	public boolean chargerCargaison()
+	/*public boolean chargerCargaison()
 	{
 		
 	}
@@ -110,7 +110,7 @@ public class Robot {
 	public boolean dechargerCargaison()
 	{
 		
-	}
+	}*/
 	
 	public Robot(String _nomRobot, boolean _estAllumer, boolean _peutSeDeplacer,boolean _avecCargaison )
 	{
@@ -130,10 +130,10 @@ public class Robot {
 		this.nomRobot = _nomRobot;
 	}
 	
-	public String toString()
+	/*public String toString()
 	{
 		
-	}
+	}*/
 	
 	private int calculerDistance()
 	{
