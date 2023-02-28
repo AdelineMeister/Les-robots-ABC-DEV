@@ -1,5 +1,7 @@
 package Robot;
 
+import java.util.Random;
+
 public class Robot {
 	
 	private String nomRobot;
@@ -16,17 +18,88 @@ public class Robot {
 	
 	public boolean allumerRobot()
 	{
-		
+		if(this.estAllumer == false)
+		{
+			this.estAllumer = true;
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 	
 	public boolean eteindreRobot()
 	{
+		if(this.estAllumer == true)
+		{
+			this.estAllumer = false;
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
+	public boolean seDeplacer( int distance)
+	{
+		distance = calculerDistance();
+		if(this.estAllumer)
+		{
+			if( distance < 10 )
+			{
+				this.peutSeDeplacer = false;
+				return false;
+			}
+			else
+			{
+				this.peutSeDeplacer = true;
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
+		
 		
 	}
 	
-	public boolean seDeplacer(Deplacement deplacement, int distance)
+	public String deplacer(Deplacement move)
 	{
-		
+		String str="";
+		if(this.peutSeDeplacer)
+		{
+			switch(move)
+			{
+				case AVANT: 
+				{
+					str = "Le robot avance";
+					break;
+				}
+				case ARRIERE:
+				{
+					str = "Le robot recule";
+					break;
+				}
+				case GAUCHE:
+				{
+					str = "Le robot tourne à gauche";
+					break;
+				}
+				case DROITE:
+				{
+					str = "Le robot tourne à droite";
+					break;
+				}
+				default : 
+				{
+					break;
+				}
+			}
+		}
+		return str;	
 	}
 	
 	public boolean chargerCargaison()
@@ -49,12 +122,12 @@ public class Robot {
 	
 	public String getname()
 	{
-		
+		return this.nomRobot;
 	}
 	
-	public void setname()
+	public void setname(String _nomRobot)
 	{
-		
+		this.nomRobot = _nomRobot;
 	}
 	
 	public String toString()
@@ -62,9 +135,13 @@ public class Robot {
 		
 	}
 	
-	public int calculerDistance()
+	private int calculerDistance()
 	{
-		
+		Random rand = new Random();
+		final int borneMin = 0;
+		final int borneMax = 100;
+		int distance = rand.nextInt(borneMax - borneMin +1) + borneMin;
+		return distance;
 	}
 	
 
