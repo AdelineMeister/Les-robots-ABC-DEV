@@ -102,15 +102,31 @@ public class Robot {
 		return str;	
 	}
 	
-	/*public boolean chargerCargaison()
+	public boolean chargerCargaison()
 	{
-		
+		if(!this.avecCargaison && this.estAllumer)
+		{
+			this.avecCargaison = true;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public boolean dechargerCargaison()
 	{
-		
-	}*/
+		if(this.avecCargaison && this.estAllumer)
+		{
+			this.avecCargaison = false;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 	// le constructeur
 	public Robot(String _nomRobot, boolean _estAllumer, boolean _peutSeDeplacer,boolean _avecCargaison )
