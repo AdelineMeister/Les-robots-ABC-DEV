@@ -42,7 +42,8 @@ public class Robot {
 		}
 	}
 	
-	public boolean seDeplacer()
+	// méthode pour savoir si le robot peut se deplacer
+	private boolean seDeplacer()
 	{
 		int distance = calculerDistance();
 		if(this.estAllumer)
@@ -61,15 +62,14 @@ public class Robot {
 		else
 		{
 			return false;
-		}
-		
-		
+		}	
 	}
 	
 	public String deplacer(Deplacement move)
 	{
+		this.peutSeDeplacer = this.seDeplacer();
 		String str="";
-		if(this.peutSeDeplacer)
+		if(this.peutSeDeplacer && this.estAllumer)
 		{
 			switch(move)
 			{
@@ -112,6 +112,7 @@ public class Robot {
 		
 	}*/
 	
+	// le constructeur
 	public Robot(String _nomRobot, boolean _estAllumer, boolean _peutSeDeplacer,boolean _avecCargaison )
 	{
 		this.nomRobot = _nomRobot;
@@ -135,6 +136,8 @@ public class Robot {
 		
 	}*/
 	
+	// retourne la distance entre le robot et l'obstacle
+	//(un nombre aléatoire entre 0 et 100)
 	private int calculerDistance()
 	{
 		Random rand = new Random();
